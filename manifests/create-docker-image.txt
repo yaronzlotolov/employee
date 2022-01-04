@@ -1,0 +1,20 @@
+*** Clean up kuberneties name sapce, docker images and containers and login to docker hub ***
+docker system prune -a
+docker login
+docker images
+kubectl delete ns employee
+
+*** check the web application ***
+cd Employees
+dotnet build 
+dotnet run
+localhost:5000  (check the web app is runnig - need to update connection string in environment variables)
+commit and push to git 
+
+*** Create docker image and push it to docker hub ***
+cd Kubernetes-Docker-Desktop
+docker build -t employeemanagement:v1 .  
+docker images | more
+docker tag employeemanagement:v1 yaronzlotolov/employeemanagement:v1
+docker images
+docker push yaronzlotolov/employeemanagement:v1
